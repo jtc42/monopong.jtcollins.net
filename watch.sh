@@ -1,1 +1,1 @@
-npx tailwindcss -o style.css --content './**/*.html' -w
+npx tailwindcss -o css/styles.css --content './**/*.html' -w
