@@ -11,69 +11,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/custom.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body class="bg-black text-white" data-mode="ios">
+<body data-mode="ios">
     <script src="index.js"></script>
 
     <!-- LCD scanline overlay (visible in GBC mode) -->
     <div id="lcd-overlay"></div>
 
-    <div class="w-screen h-screen flex flex-col">
+    <div class="page">
         <!-- Mode toggle -->
-        <div class="flex justify-center pt-4" style="z-index: 10000; position: relative;">
+        <div class="toggle-bar">
             <div class="mode-toggle" onclick="toggleMode()">
                 <span class="mode-toggle-option active" id="opt-ios">iOS</span>
                 <span class="mode-toggle-option" id="opt-gbc">GBC</span>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-3 grid-cols-1 gap-8 md:pt-0 pt-8 w-full h-full items-center justify-center">
-            <div class="md:text-right text-center md:mt-4 mt-8">
-                <p class="text-xl">monopong</p>
+        <div class="main-grid">
+            <div class="info-panel">
+                <p class="title">monopong</p>
                 <p>A lonely ball game</p>
-                <div class="mt-4">
+                <div class="download-section">
                     <!-- iOS App Store download -->
                     <div id="ios-download">
                         <a href="https://apps.apple.com/us/app/monopong/id1660590652?itsct=apps_box_badge&amp;itscg=30200"
-                            style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 56px;"><img
+                            class="appstore-badge"><img
                                 src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1671667200?h=326b4d64bc3611e66af7722aa1329859"
-                                alt="Download on the App Store"
-                                style="border-radius: 13px; width: 150px; height: 56px;"></a>
+                                alt="Download on the App Store"></a>
                     </div>
                     <!-- GBC ROM download -->
                     <div id="gbc-download">
                         <a href="#" class="gbc-download-btn">Download ROM</a>
-                        <div style="margin-top: 0.5rem;">
+                        <div class="gbc-btn-spacer">
                             <a href="#" class="gbc-play-btn">Play Online</a>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="m-auto w-96 h-96 flex items-center justify-center" id="ball-container-wrap">
+
+            <div class="ring-area">
                 <!-- iOS mode: original ring + ball -->
-                <div id="ring-ios" class="border-2 border-white rounded-full w-96 h-96">
-                    <div class="flex items-center justify-center h-full w-full">
-                        <img src="balls.svg" alt="balls" class="h-16" id="ball-img-ios" />
-                    </div>
+                <div id="ring-ios">
+                    <img src="balls.svg" alt="balls" class="ball-img" />
                 </div>
                 <!-- GBC mode: pixel ring + ball (scaled up with nearest-neighbor) -->
-                <div id="ring-gbc" style="display:none; position:relative; width:384px; height:384px;">
-                    <img src="ring-pixel.png" alt="ring" style="width:384px; height:384px;" />
-                    <img src="balls-pixel.png" alt="balls"
-                        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); height:62px; width:62px;" />
+                <div id="ring-gbc">
+                    <img src="ring-pixel.png" alt="ring" class="ring-img" />
+                    <img src="balls-pixel.png" alt="balls" class="ball-img" />
                 </div>
             </div>
+
             <div></div>
         </div>
-        <div class="text-center mb-4 flex gap-4 justify-center">
-            <p class="text-neutral-500 hover:text-white text-xs">
+
+        <div class="footer">
+            <p class="footer-link">
                 <a href="/privacy">Privacy Policy</a>
             </p>
-            <p class="text-neutral-500 hover:text-white text-xs">
+            <p class="footer-link">
                 <a href="https://github.com/jtc42/monopong-ios-issues/issues" target="_blank">Report a Bug</a>
             </p>
         </div>
