@@ -176,6 +176,12 @@ body.emulator-active .main-grid {
     overflow: hidden;
 }
 
+@media (min-width: 768px) {
+    body.emulator-active .main-grid {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+}
+
 body.emulator-active .ring-area {
     width: auto;
     height: auto;
