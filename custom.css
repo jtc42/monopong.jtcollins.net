@@ -1,0 +1,220 @@
+/* =========================================
+   Monopong – iOS / GBC Mode Toggle Styles
+   ========================================= */
+
+/* --- Smooth transitions between modes --- */
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* --- Mode Toggle Switch --- */
+.mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    transition: border-color 0.3s, border-radius 0.3s, font-family 0.3s;
+}
+
+.mode-toggle-option {
+    padding: 6px 16px;
+    transition: background-color 0.3s, color 0.3s;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.mode-toggle-option.active {
+    background-color: white;
+    color: black;
+}
+
+/* --- GBC Download Button (hidden in iOS mode) --- */
+#gbc-download {
+    display: none;
+}
+
+.gbc-download-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.gbc-download-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+/* --- LCD / Scanline Overlay --- */
+#lcd-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background:
+        /* Horizontal scanlines */
+        repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.15) 0px,
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 3px),
+        /* Vertical pixel columns */
+        repeating-linear-gradient(90deg,
+            rgba(0, 0, 0, 0.08) 0px,
+            rgba(0, 0, 0, 0.08) 1px,
+            transparent 1px,
+            transparent 3px);
+}
+
+/* --- Vignette Overlay (always present, transitions opacity) --- */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(ellipse at center,
+            transparent 50%,
+            rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* =========================================
+   GBC Mode
+   ========================================= */
+
+body[data-mode="gbc"] {
+    background-color: #0f380f !important;
+    color: #8bac0f !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.65rem;
+}
+
+/* Turn on the LCD overlay */
+body[data-mode="gbc"] #lcd-overlay {
+    opacity: 1;
+}
+
+/* Turn on the vignette */
+body[data-mode="gbc"]::after {
+    opacity: 1;
+}
+
+/* --- Typography adjustments for pixel font --- */
+body[data-mode="gbc"] .text-xl {
+    font-size: 0.9rem !important;
+    line-height: 1.8 !important;
+    letter-spacing: 0.12em;
+}
+
+body[data-mode="gbc"] .text-xs {
+    font-size: 0.45rem !important;
+    line-height: 1.6 !important;
+}
+
+/* --- Downloads toggle --- */
+body[data-mode="gbc"] #ios-download {
+    display: none !important;
+}
+
+body[data-mode="gbc"] #gbc-download {
+    display: block !important;
+}
+
+body[data-mode="gbc"] .gbc-download-btn {
+    border-color: #8bac0f;
+    color: #8bac0f;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem;
+    border-radius: 0;
+    padding: 12px 22px;
+}
+
+body[data-mode="gbc"] .gbc-download-btn:hover {
+    background-color: #8bac0f;
+    color: #0f380f;
+}
+
+/* --- Ball container --- */
+body[data-mode="gbc"] #ball-container {
+    border-color: #8bac0f !important;
+    border-width: 3px !important;
+}
+
+/* Colorize ball SVG to GBC green */
+body[data-mode="gbc"] #ball-img {
+    image-rendering: pixelated;
+    filter:
+        brightness(0) saturate(100%) invert(68%) sepia(74%) saturate(310%) hue-rotate(33deg) brightness(97%) contrast(88%);
+    transition: filter 0.4s ease;
+}
+
+/* --- Footer links --- */
+body[data-mode="gbc"] .text-neutral-500 {
+    color: #306230 !important;
+}
+
+body[data-mode="gbc"] .text-neutral-500:hover,
+body[data-mode="gbc"] .hover\:text-white:hover {
+    color: #9bbc0f !important;
+}
+
+/* --- Mode toggle theming in GBC mode --- */
+body[data-mode="gbc"] .mode-toggle {
+    border-color: #8bac0f;
+    border-radius: 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.4rem;
+}
+
+body[data-mode="gbc"] .mode-toggle-option {
+    color: #306230;
+}
+
+body[data-mode="gbc"] .mode-toggle-option.active {
+    background-color: #8bac0f;
+    color: #0f380f;
+}
+
+/* --- Subtle flicker for LCD authenticity --- */
+@keyframes lcd-flicker {
+    0% {
+        opacity: 1;
+    }
+
+    92% {
+        opacity: 1;
+    }
+
+    93% {
+        opacity: 0.96;
+    }
+
+    94% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+body[data-mode="gbc"] #lcd-overlay {
+    animation: lcd-flicker 4s infinite;
+}

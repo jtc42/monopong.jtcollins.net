@@ -8,29 +8,52 @@
     <meta name="apple-itunes-app" content="app-id=1660590652">
     <title>Monopong</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/custom.css">
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white" data-mode="ios">
     <script src="index.js"></script>
+
+    <!-- LCD scanline overlay (visible in GBC mode) -->
+    <div id="lcd-overlay"></div>
+
     <div class="w-screen h-screen flex flex-col">
+        <!-- Mode toggle -->
+        <div class="flex justify-center pt-4" style="z-index: 10000; position: relative;">
+            <div class="mode-toggle" onclick="toggleMode()">
+                <span class="mode-toggle-option active" id="opt-ios">iOS</span>
+                <span class="mode-toggle-option" id="opt-gbc">GBC</span>
+            </div>
+        </div>
+
         <div class="grid md:grid-cols-3 grid-cols-1 gap-8 md:pt-0 pt-8 w-full h-full items-center justify-center">
             <div class="md:text-right text-center md:mt-4 mt-8">
                 <p class="text-xl">monopong</p>
                 <p>A lonely ball game</p>
                 <div class="mt-4">
-                    <a href="https://apps.apple.com/us/app/monopong/id1660590652?itsct=apps_box_badge&amp;itscg=30200"
-                        style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 56px;"><img
-                            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1671667200?h=326b4d64bc3611e66af7722aa1329859"
-                            alt="Download on the App Store"
-                            style="border-radius: 13px; width: 150px; height: 56px;"></a>
+                    <!-- iOS App Store download -->
+                    <div id="ios-download">
+                        <a href="https://apps.apple.com/us/app/monopong/id1660590652?itsct=apps_box_badge&amp;itscg=30200"
+                            style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 56px;"><img
+                                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1671667200?h=326b4d64bc3611e66af7722aa1329859"
+                                alt="Download on the App Store"
+                                style="border-radius: 13px; width: 150px; height: 56px;"></a>
+                    </div>
+                    <!-- GBC ROM download -->
+                    <div id="gbc-download">
+                        <a href="#" class="gbc-download-btn">Download ROM</a>
+                    </div>
                 </div>
 
             </div>
-            <div class="m-auto border-2 border-white rounded-full w-96 h-96">
+            <div class="m-auto border-2 border-white rounded-full w-96 h-96" id="ball-container">
                 <div class="flex items-center justify-center h-full w-full">
                     <!-- <img src="balls.svg" alt="balls" class="mt-10 -ml-9 h-16" /> -->
-                    <img src="balls.svg" alt="balls" class="h-16" />
+                    <img src="balls.svg" alt="balls" class="h-16" id="ball-img" />
                 </div>
             </div>
             <div></div>
