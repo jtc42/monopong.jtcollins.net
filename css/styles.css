@@ -140,6 +140,52 @@ img {
     -ms-interpolation-mode: nearest-neighbor;
 }
 
+/* --- Emulator Container --- */
+#emulator-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+/* Border wrapper sits under the LCD overlays so it gets tinted/filtered */
+#emulator-border {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Iframe sits above the LCD overlays so the game content is unfiltered */
+#emulator-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    z-index: 10005;
+}
+
+/* When emulator is active, let the grid expand to fill viewport */
+body.emulator-active .main-grid {
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+}
+
+body.emulator-active .ring-area {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+body.emulator-active .info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* --- Footer --- */
 .footer {
     text-align: center;

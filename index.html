@@ -45,7 +45,10 @@
                     <div id="gbc-download">
                         <a href="/gbcdl/1.2/monopong.gbc" class="gbc-download-btn" download>Download ROM</a>
                         <div class="gbc-btn-spacer">
-                            <a href="#" class="gbc-play-btn">Play Online</a>
+                            <a href="#" class="gbc-play-btn" onclick="showEmulator(); return false;">Play Online</a>
+                        </div>
+                        <div class="gbc-btn-spacer" id="gbc-back" style="display: none;">
+                            <a href="#" class="gbc-play-btn" onclick="hideEmulator(); return false;">Back</a>
                         </div>
                     </div>
                 </div>
@@ -60,6 +63,12 @@
                 <div id="ring-gbc">
                     <img src="/assets/images/ring-pixel.png" alt="ring" class="ring-img" />
                     <img src="/assets/images/balls-pixel.png" alt="balls" class="ball-img" />
+                </div>
+                <!-- GBC emulator (shown when Play Online is clicked) -->
+                <div id="emulator-container">
+                    <div id="emulator-border">
+                        <iframe id="emulator-frame" src="about:blank" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
 
