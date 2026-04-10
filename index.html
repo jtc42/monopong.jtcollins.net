@@ -46,14 +46,25 @@
                     <!-- GBC ROM download -->
                     <div id="gbc-download">
                         <a href="#" class="gbc-download-btn">Download ROM</a>
+                        <div class="mt-4">
+                            <a href="#" class="gbc-play-btn">Play Online</a>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div class="m-auto border-2 border-white rounded-full w-96 h-96" id="ball-container">
-                <div class="flex items-center justify-center h-full w-full">
-                    <!-- <img src="balls.svg" alt="balls" class="mt-10 -ml-9 h-16" /> -->
-                    <img src="balls.svg" alt="balls" class="h-16" id="ball-img" />
+            <div class="m-auto w-96 h-96 flex items-center justify-center" id="ball-container-wrap">
+                <!-- iOS mode: original ring + ball -->
+                <div id="ring-ios" class="border-2 border-white rounded-full w-96 h-96">
+                    <div class="flex items-center justify-center h-full w-full">
+                        <img src="balls.svg" alt="balls" class="h-16" id="ball-img-ios" />
+                    </div>
+                </div>
+                <!-- GBC mode: pixel ring + ball (scaled up with nearest-neighbor) -->
+                <div id="ring-gbc" style="display:none; position:relative; width:384px; height:384px;">
+                    <img src="ring-pixel.png" alt="ring" style="width:384px; height:384px;" />
+                    <img src="balls-pixel.png" alt="balls"
+                        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); height:62px; width:62px;" />
                 </div>
             </div>
             <div></div>
