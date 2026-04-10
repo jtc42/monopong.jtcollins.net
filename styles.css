@@ -265,14 +265,28 @@ body::after {
 }
 
 /* =========================================
-   GBC Mode – Dark + Orange palette
+   GBC Mode – LCD filter + pixel font
    ========================================= */
 
 body[data-mode="gbc"] {
-    background-color: #1a1a2e;
-    color: #d4d4d8;
+    background-color: #2e3324;
+    color: #fff;
     font-family: 'Press Start 2P', monospace;
     font-size: 0.65rem;
+}
+
+/* Green tint overlay (mix-blend-mode: multiply shifts toward LCD green) */
+body[data-mode="gbc"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10001;
+    background: rgba(218, 243, 169, 0.62);
+    mix-blend-mode: multiply;
 }
 
 body[data-mode="gbc"] #lcd-overlay {
@@ -316,12 +330,12 @@ body[data-mode="gbc"] .gbc-play-btn {
 }
 
 body[data-mode="gbc"] .gbc-download-btn {
-    border-color: #e8732a;
-    color: #e8732a;
+    border-color: #e69659;
+    color: #e69659;
 }
 
 body[data-mode="gbc"] .gbc-download-btn:hover {
-    background-color: #e8732a;
+    background-color: #e69659;
     color: #1a1a2e;
 }
 
@@ -341,7 +355,7 @@ body[data-mode="gbc"] .footer-link {
 }
 
 body[data-mode="gbc"] .footer-link:hover {
-    color: #e8732a;
+    color: #e69659;
 }
 
 /* Toggle */
@@ -353,7 +367,7 @@ body[data-mode="gbc"] .mode-toggle {
 }
 
 body[data-mode="gbc"] .mode-toggle-option {
-    color: #555570;
+    color: #d8d8d8;
     padding: 10px 20px;
 }
 
