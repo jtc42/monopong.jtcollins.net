@@ -146,13 +146,20 @@ body[data-mode="gbc"] #gbc-download {
     display: block !important;
 }
 
-body[data-mode="gbc"] .gbc-download-btn {
-    border-color: #e8732a;
-    color: #e8732a;
+body[data-mode="gbc"] .gbc-download-btn,
+body[data-mode="gbc"] .gbc-play-btn {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.5rem;
     border-radius: 0;
     padding: 12px 22px;
+    min-width: 10rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+body[data-mode="gbc"] .gbc-download-btn {
+    border-color: #e8732a;
+    color: #e8732a;
 }
 
 body[data-mode="gbc"] .gbc-download-btn:hover {
@@ -163,10 +170,6 @@ body[data-mode="gbc"] .gbc-download-btn:hover {
 body[data-mode="gbc"] .gbc-play-btn {
     border-color: #d4d4d8;
     color: #d4d4d8;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.45rem;
-    border-radius: 0;
-    padding: 10px 18px;
 }
 
 body[data-mode="gbc"] .gbc-play-btn:hover {
@@ -186,7 +189,7 @@ body[data-mode="gbc"] .hover\:text-white:hover {
 
 /* --- Mode toggle theming in GBC mode --- */
 body[data-mode="gbc"] .mode-toggle {
-    border-color: #e8732a;
+    border-color: #ffffff;
     border-radius: 0;
     font-family: 'Press Start 2P', monospace;
     font-size: 0.55rem;
@@ -198,7 +201,7 @@ body[data-mode="gbc"] .mode-toggle-option {
 }
 
 body[data-mode="gbc"] .mode-toggle-option.active {
-    background-color: #e8732a;
+    background-color: #ffffff;
     color: #1a1a2e;
 }
 
