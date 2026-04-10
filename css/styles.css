@@ -84,6 +84,10 @@ img {
     line-height: 1.75rem;
 }
 
+.gbc-subtitle {
+    display: none;
+}
+
 .download-section {
     margin-top: 1rem;
 }
@@ -427,6 +431,11 @@ body[data-mode="gbc"] .title {
     font-size: 0.9rem;
     line-height: 1.8;
     letter-spacing: 0.12em;
+}
+
+body[data-mode="gbc"] .gbc-subtitle {
+    display: block;
+    margin-top: 0.25rem;
 }
 
 body[data-mode="gbc"] .footer-link {
