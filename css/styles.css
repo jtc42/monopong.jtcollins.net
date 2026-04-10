@@ -254,7 +254,7 @@ body.emulator-active .info-panel {
 .mode-toggle {
     display: inline-flex;
     align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
@@ -262,12 +262,13 @@ body.emulator-active .info-panel {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     transition: border-color 0.3s, border-radius 0.3s, font-family 0.3s;
+    font-weight: 500;
 }
 
 .mode-toggle-option {
     padding: 10px 24px;
     transition: background-color 0.3s, color 0.3s;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .mode-toggle-option.active {
