@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-itunes-app" content="app-id=1660590652">
     <title>Monopong</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body data-mode="ios">
-    <script src="index.js"></script>
+    <script src="/js/index.js"></script>
 
     <!-- LCD scanline overlay (visible in GBC mode) -->
     <div id="lcd-overlay"></div>
@@ -54,12 +54,12 @@
             <div class="ring-area">
                 <!-- iOS mode: original ring + ball -->
                 <div id="ring-ios">
-                    <img src="balls.svg" alt="balls" class="ball-img" />
+                    <img src="/assets/images/balls.svg" alt="balls" class="ball-img" />
                 </div>
                 <!-- GBC mode: pixel ring + ball (scaled up with nearest-neighbor) -->
                 <div id="ring-gbc">
-                    <img src="ring-pixel.png" alt="ring" class="ring-img" />
-                    <img src="balls-pixel.png" alt="balls" class="ball-img" />
+                    <img src="/assets/images/ring-pixel.png" alt="ring" class="ring-img" />
+                    <img src="/assets/images/balls-pixel.png" alt="balls" class="ball-img" />
                 </div>
             </div>
 

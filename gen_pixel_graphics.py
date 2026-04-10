@@ -3,13 +3,14 @@ Generate pixel-art PNGs for the Monopong GBC-mode webpage,
 derived directly from the actual Game Boy Color game data.
 
 Produces:
-  - ring-pixel.png   : arena circle with AA, matching gen_arena.py logic
-  - balls-pixel.png  : ball + 2 ghost trails, matching render_playing.c
+    - assets/images/ring-pixel.png   : arena circle with AA, matching gen_arena.py logic
+    - assets/images/balls-pixel.png  : ball + 2 ghost trails, matching render_playing.c
 
 All coordinates and radii match the real GBC game constants.
 """
 
 import math
+from pathlib import Path
 from PIL import Image
 
 # ================================================================
@@ -94,7 +95,7 @@ def ball_to_image(ball_grid, alpha=255):
 
 
 # ================================================================
-# Generate ring-pixel.png
+# Generate assets/images/ring-pixel.png
 # ================================================================
 # Output a square PNG where the ring fills the full width.
 # Same thickness and AA algorithm as gen_arena.py, just a larger radius.
@@ -102,6 +103,9 @@ RING_IMG_SIZE = 128  # native pixel resolution (scaled up on the page)
 RING_IMG_CX = RING_IMG_SIZE // 2
 RING_IMG_CY = RING_IMG_SIZE // 2
 RING_IMG_RADIUS = RING_IMG_SIZE // 2 - 2  # leave 2px margin so AA pixels aren't clipped
+
+
+OUTPUT_DIR = Path("assets/images")
 
 
 def gen_ring():
@@ -144,14 +148,16 @@ def gen_ring():
                 # AA midtone — partial coverage
                 img.putpixel((px, py), COL_LIGHT)
 
-    img.save("ring-pixel.png")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = OUTPUT_DIR / "ring-pixel.png"
+    img.save(output_path)
     print(
-        f"Wrote ring-pixel.png ({RING_IMG_SIZE}x{RING_IMG_SIZE}, radius={RING_IMG_RADIUS}, ring_width={RING_WIDTH})"
+        f"Wrote {output_path} ({RING_IMG_SIZE}x{RING_IMG_SIZE}, radius={RING_IMG_RADIUS}, ring_width={RING_WIDTH})"
     )
 
 
 # ================================================================
-# Generate balls-pixel.png
+# Generate assets/images/balls-pixel.png
 # ================================================================
 def gen_balls():
     """Generate ball + 2 ghost trails on a transparent canvas.
@@ -200,8 +206,10 @@ def gen_balls():
     ball_img.putdata(ball_pixels)
     img.paste(ball_img, (main_x, main_y), ball_img)
 
-    img.save("balls-pixel.png")
-    print(f"Wrote balls-pixel.png ({canvas_w}x{canvas_h})")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = OUTPUT_DIR / "balls-pixel.png"
+    img.save(output_path)
+    print(f"Wrote {output_path} ({canvas_w}x{canvas_h})")
 
 
 if __name__ == "__main__":
