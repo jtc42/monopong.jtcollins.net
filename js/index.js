@@ -1,4 +1,4 @@
-var EMULATOR_SRC = '/play/monopong-gbc-1.2.html';
+var EMULATOR_SRC = '/play/monopong-gbc.html';
 
 function unloadEmulator() {
     var frame = document.getElementById('emulator-frame');
